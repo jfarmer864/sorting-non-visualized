@@ -1,6 +1,4 @@
-from matplotlib import pyplot as plt
-from matplotlib.animation import FuncAnimation
-plt.style.use('seaborn-pastel')
+
 
 example_array = [2,6,3,7,1,8,11,10,9]
 example2 = [3,3,3,3,1]
@@ -92,23 +90,5 @@ def merge_sort(array):
         index += 1
     return temp_array[0]
 
+#choose sort(example array)
 
-y = example_array       
-x = [i + 1 for i in range(len(example_array))]
-algo = bubble_sort(example_array)
-
-fig = plt.figure()
-ax = fig.add_subplot(111)
-bar_rec = ax.bar(x, y)
-text = ax.text(0.02, 0.95, "", transform=ax.transAxes)
-
-epochs = [0]
-def update_plot(array, rec, epochs):
-    for rec, val in zip(rec, array):
-        rec.set_height(val)
-    epochs[0] += 1
-    text.set_text("Number of operations: {}".format(epochs[0]))
-
-anima = FuncAnimation(fig, func=update_plot, fargs=(bar_rec, epochs), frames=algo, interval=1, repeat=False)
-
-plt.show()
